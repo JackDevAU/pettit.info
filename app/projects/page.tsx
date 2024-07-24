@@ -29,8 +29,8 @@ export default async function ProjectsPage() {
 							key={project?.node?.id}
 							href={`/projects/${project?.node?._sys.filename}`}
 						>
-							<Card className="p-6 h-full w-full bg-white rounded-3xl border-4 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] overflow-hidden">
-								<div className="relative w-full h-64 mb-4">
+							<Card className="h-full w-full bg-white rounded-3xl border-4 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] overflow-hidden">
+								<div className="relative w-full h-64 mb-4 border-b-4 border-black">
 									<Image
 										className="object-cover w-full h-full"
 										src={project?.node?.coverImage || ""}
@@ -38,25 +38,27 @@ export default async function ProjectsPage() {
 										layout="fill"
 									/>
 								</div>
-								<Typography
-									variant="h2"
-									className="font-bold text-2xl mb-2 text-black"
-								>
-									{project?.node?.title}
-								</Typography>
-								<Typography variant="p" className="text-black">
-									{project?.node?.abstract}
-								</Typography>
+								<div className="p-6">
+									<Typography
+										variant="h2"
+										className="font-bold text-2xl mb-2 text-black"
+									>
+										{project?.node?.title}
+									</Typography>
+									<Typography variant="p" className="text-black">
+										{project?.node?.abstract}
+									</Typography>
 
-								<div className="flex gap-1">
-									{project?.node?.skills?.map((skill, index: number) => (
-										<Badge
-											key={index}
-											className={`${skill?.tag?.colour} text-lg font-semibold`}
-										>
-											{skill?.tag?.title}
-										</Badge>
-									))}
+									<div className="flex gap-1">
+										{project?.node?.skills?.map((skill, index: number) => (
+											<Badge
+												key={index}
+												className={`${skill?.tag?.colour} text-lg font-semibold`}
+											>
+												{skill?.tag?.title}
+											</Badge>
+										))}
+									</div>
 								</div>
 							</Card>
 						</Link>
