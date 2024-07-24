@@ -18,7 +18,9 @@ export default async function ProjectsPage() {
 
 	return (
 		<div className="pt-24 space-y-8">
-			<Typography variant={"h1"}>Projects</Typography>
+			<Typography variant={"h1"} className="pt-8">
+				Projects
+			</Typography>
 			<div className="grid grid-cols-1 md:grid-cols-2 gap-4">
 				{projects.totalCount > 0 ? (
 					projects?.edges?.map((project) => (

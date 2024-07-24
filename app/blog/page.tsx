@@ -19,7 +19,7 @@ export default async function PostsListPage() {
 			{posts.data.postConnection.totalCount === 0 ? (
 				<p className="text-center">No posts yet!</p>
 			) : (
-				<ul className="p-8 mx-auto">
+				<ul className="md:p-8 mx-auto">
 					{posts.data.postConnection.edges?.map((post) => (
 						<li key={post?.node?._sys.filename}>
 							<Link href={`/blog/${post?.node?._sys.filename}`}>

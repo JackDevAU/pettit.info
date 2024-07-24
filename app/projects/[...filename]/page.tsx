@@ -31,7 +31,7 @@ export default async function ProjectPage({
 	}
 
 	return (
-		<article className="grid-cols-2 grid pt-24 h-screen pb-4">
+		<article className="grid-cols-1 md:grid-cols-2 grid pt-24 h-screen pb-4">
 			<div className="flex flex-col justify-between ">
 				<div className="flex flex-grow border-2 border-black">
 					<Image
