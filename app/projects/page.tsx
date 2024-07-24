@@ -5,6 +5,12 @@ import client from "@/tina/__generated__/client";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+	title: "Projects",
+	description: "A collection of projects I've worked on or am working on",
+};
 
 export default async function ProjectsPage() {
 	const { data } = await client.queries.projectConnection();

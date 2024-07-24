@@ -3,6 +3,19 @@ import client from "@/tina/__generated__/client";
 import React from "react";
 import BlogClientPage from "./client-page";
 
+export async function generateMetadata({
+	params,
+}: { params: { slug: string[] } }) {
+	const project = await client.queries.post({
+		relativePath: `${params.slug}.mdx`,
+	});
+
+	return {
+		title: project.data.post.title,
+		description: project.data.post.description,
+	};
+}
+
 export default async function PostPage({
 	params,
 }: {

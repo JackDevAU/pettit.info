@@ -4,6 +4,17 @@ import Image from "next/image";
 import React from "react";
 import ProjectClientPage from "./client-page";
 
+export async function generateMetadata({ params }) {
+	const project = await client.queries.project({
+		relativePath: `${params.filename}.mdx`,
+	});
+
+	return {
+		title: project.data.project.title,
+		description: project.data.project.abstract,
+	};
+}
+
 export default async function ProjectPage({
 	params: { filename },
 }: {
