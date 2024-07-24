@@ -132,3 +132,11 @@ figure[data-rehype-pretty-code-figure] pre::-webkit-scrollbar-corner,
 .code::-webkit-scrollbar-corner {
   background: transparent;
 }
+
+code::after {
+  content: none !important;
+}
+
+code::before {
+  content: none !important;
+}
