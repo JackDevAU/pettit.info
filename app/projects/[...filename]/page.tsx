@@ -35,8 +35,8 @@ export default async function ProjectPage({
 				>
 					{project.data.project.title}
 				</Typography>
-				<ProjectClientPage project={project.data.project} />
 			</div>
+			<ProjectClientPage project={project.data.project} />
 		</article>
 	);
 }
