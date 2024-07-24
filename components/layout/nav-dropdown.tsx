@@ -2,15 +2,13 @@
 
 import clsx from "clsx";
 import { ArrowUpRightIcon, ChevronDown } from "lucide-react";
-
 import { useState } from "react";
 import Link from "next/link";
-import arrow from "@/public/arrow.svg";
 import { useClickAway } from "@uidotdev/usehooks";
 
 export default function NavDropdown() {
 	const [isOpen, setIsOpen] = useState(false);
-	const ref = useClickAway(() => {
+	const ref = useClickAway<any>(() => {
 		setIsOpen(false);
 	});
 

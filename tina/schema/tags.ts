@@ -19,7 +19,7 @@ export const TagsSchema: Collection = {
 			type: "string",
 			label: "Colour",
 			ui: {
-				component: ColorPickerInput,
+				component: ColorPickerInput as any,
 			},
 		},
 		{
