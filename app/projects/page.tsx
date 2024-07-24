@@ -47,9 +47,13 @@ export default async function ProjectsPage() {
 								<Typography variant="p" className="text-black">
 									{project?.node?.abstract}
 								</Typography>
+
 								<div className="flex gap-1">
-									{project?.node?.skills?.map((skill, index) => (
-										<Badge key={index} className="round-full">
+									{project?.node?.skills?.map((skill, index: number) => (
+										<Badge
+											key={index}
+											className={`${skill?.tag?.colour} text-lg font-semibold`}
+										>
 											{skill?.tag?.title}
 										</Badge>
 									))}

@@ -11,7 +11,7 @@ import Typography from "@/components/util/typography";
 export default function ProjectClientPage({ project }: { project: any }) {
 	return (
 		<div className="flex flex-col justify-between border-l-2 border-t-4 border-r-4 border-b-4 border-black">
-			<div className="flex flex-grow p-4">
+			<div className="flex-grow p-4">
 				<TinaMarkdown content={project.body} components={ComponentsRenderer} />
 			</div>
 			<div className="p-8 border-black border-t-4 border-b-4 gap-4 flex">
