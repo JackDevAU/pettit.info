@@ -14,6 +14,12 @@ export const ProjectsSchema: Collection = {
 			required: true,
 		},
 		{
+			type: "number",
+			name: "order",
+			label: "Order to display",
+			description: "smallest number will be displayed first",
+		},
+		{
 			type: "string",
 			name: "abstract",
 			label: "Abstract",
