@@ -20,7 +20,7 @@ export default function BlogClientPage({ post }: { post: any }) {
 				reactionsEnabled="1"
 				emitMetadata="0"
 				inputPosition="bottom"
-				theme="light"
+				theme="noborder_light"
 				lang="en"
 				loading="lazy"
 				term="Welcome to My Blog! Leave a comment or ask a question."
