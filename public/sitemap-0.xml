@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:mobile="http://www.google.com/schemas/sitemap-mobile/1.0" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
-<url><loc>https://pettit.info/projects</loc><lastmod>2024-07-25T13:34:20.428Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://pettit.info/blog</loc><lastmod>2024-07-25T13:34:20.430Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://pettit.info</loc><lastmod>2024-07-25T13:34:20.430Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://pettit.info/blog/Hello-World</loc><lastmod>2024-07-25T13:34:20.430Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://pettit.info/projects/Clean-Nextjs</loc><lastmod>2024-07-25T13:34:20.430Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://pettit.info/projects/Horror-Reviews</loc><lastmod>2024-07-25T13:34:20.430Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://pettit.info/projects/MPC-Autofill-Extension</loc><lastmod>2024-07-25T13:34:20.430Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://pettit.info/projects/Next-Whois</loc><lastmod>2024-07-25T13:34:20.430Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://pettit.info/projects/One-Week</loc><lastmod>2024-07-25T13:34:20.430Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://pettit.info/projects/Tekken-Lab</loc><lastmod>2024-07-25T13:34:20.430Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://pettit.info/projects/Up-Bank-Budget</loc><lastmod>2024-07-25T13:34:20.430Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://pettit.info/blog</loc><lastmod>2024-07-25T14:09:30.957Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://pettit.info/feed.xml</loc><lastmod>2024-07-25T14:09:30.957Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://pettit.info</loc><lastmod>2024-07-25T14:09:30.957Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://pettit.info/projects</loc><lastmod>2024-07-25T14:09:30.957Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://pettit.info/blog/Hello-World</loc><lastmod>2024-07-25T14:09:30.957Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://pettit.info/projects/Clean-Nextjs</loc><lastmod>2024-07-25T14:09:30.957Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://pettit.info/projects/Horror-Reviews</loc><lastmod>2024-07-25T14:09:30.957Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://pettit.info/projects/MPC-Autofill-Extension</loc><lastmod>2024-07-25T14:09:30.957Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://pettit.info/projects/Next-Whois</loc><lastmod>2024-07-25T14:09:30.957Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://pettit.info/projects/One-Week</loc><lastmod>2024-07-25T14:09:30.957Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://pettit.info/projects/Tekken-Lab</loc><lastmod>2024-07-25T14:09:30.957Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://pettit.info/projects/Up-Bank-Budget</loc><lastmod>2024-07-25T14:09:30.957Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
 </urlset>

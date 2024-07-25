@@ -17,7 +17,7 @@ export async function GET() {
 		posts.data.postConnection.edges?.map((postNode) => {
 			const post = postNode?.node;
 			feed.item({
-				title: post.title!,
+				title: post?.title || "",
 				guid: `https://pettit.info/${post?._sys.filename}`,
 				url: `https://pettit.info/${post?._sys.filename}`,
 				date: post?.datePublished || new Date(),
