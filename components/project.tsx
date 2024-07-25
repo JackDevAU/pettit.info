@@ -36,7 +36,7 @@ export default function ProjectComponent({ project }: { project: Project }) {
 						components={ComponentsRenderer}
 					/>
 				</div>
-				<div className="p-8 border-black border-t-4 border-b-4 gap-4 flex">
+				<div className="p-8 border-black border-t-4 border-b-4 gap-4 flex flex-wrap">
 					{project.skills?.map((skill) => (
 						<Badge
 							key={skill?.tag?.id}
