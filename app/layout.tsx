@@ -12,6 +12,11 @@ export const metadata: Metadata = {
 		default: "Welcome!",
 		template: "%s - Jack Pettit",
 	},
+	alternates: {
+		types: {
+			"application/rss+xml": "https://pettit.info/feed.xml",
+		},
+	},
 	description: "My Personal Website - for all things me",
 	keywords: ["Jack Pettit", "Portfolio"],
 	authors: [{ name: "Jack Pettit", url: "https://github.com/jackdevau" }],
