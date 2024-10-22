@@ -5,6 +5,8 @@ import { getMyGitHubContributions } from "@/lib/api/actions/github/get-contribut
 import { calculateTotalCoffeeConsumption } from "@/lib/stats/coffee/total-coffees";
 import client from "@/tina/__generated__/client";
 
+export const revalidate = 86400; // Revalidate every 24 hours
+
 export default async function Home() {
 	const estimatedTotalCoffees = calculateTotalCoffeeConsumption();
 	const contributions = await getMyGitHubContributions();
