@@ -18,8 +18,8 @@ export async function GET() {
 			const post = postNode?.node;
 			feed.item({
 				title: post?.title || "",
-				guid: `https://pettit.info/${post?._sys.filename}`,
-				url: `https://pettit.info/${post?._sys.filename}`,
+				guid: `https://pettit.info/blog/${post?._sys.filename}`,
+				url: `https://pettit.info/blog/${post?._sys.filename}`,
 				date: post?.datePublished || new Date(),
 				description: post?.description || "",
 				author: "Jack Pettit",
