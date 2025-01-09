@@ -20,7 +20,7 @@ const nextConfig = {
 			{
 				// Rss was bad... ooops
 				source: "/vercel-free-password-protection-nextjs",
-				destination: "/blob/vercel-free-password-protection-nextjs",
+				destination: "/blog/vercel-free-password-protection-nextjs",
 				permanent: true,
 			},
 		];
