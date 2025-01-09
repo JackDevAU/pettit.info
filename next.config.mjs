@@ -13,10 +13,15 @@ const nextConfig = {
 				source: "/admin",
 				destination: "/admin/index.html",
 			},
+		];
+	},
+	redirects: async () => {
+		return [
 			{
 				// Rss was bad... ooops
-				source: "vercel-free-password-protection-nextjs",
+				source: "/vercel-free-password-protection-nextjs",
 				destination: "/blob/vercel-free-password-protection-nextjs",
+				permanent: true,
 			},
 		];
 	},
