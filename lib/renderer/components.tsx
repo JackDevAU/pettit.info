@@ -1,8 +1,10 @@
-import { Components } from "tinacms/dist/rich-text";
+import type { Components } from "tinacms/dist/rich-text";
 import Image from "next/image";
 import Link from "next/link";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import Typography from "@/components/util/typography";
+import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
+import gh from "react-syntax-highlighter/dist/cjs/styles/prism/ghcolors";
 
 export const ComponentsRenderer: Components<{}> = {
 	h1: (props) => (
@@ -50,8 +52,13 @@ export const ComponentsRenderer: Components<{}> = {
 	code_block: (props) => {
 		return (
 			<div className="flex h-full gap-2 ">
-				<div className="h-[100vh] border-black border-2" />
-				<code {...props} />
+				<div className=" border-black border-l-2">
+					<SyntaxHighlighter
+						code={props?.value || ""}
+						language={props?.lang || "jsx"}
+						style={gh}
+					/>
+				</div>
 			</div>
 		);
 	},
