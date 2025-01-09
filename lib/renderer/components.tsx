@@ -53,11 +53,9 @@ export const ComponentsRenderer: Components<{}> = {
 		return (
 			<div className="flex h-full gap-2 ">
 				<div className=" border-black border-l-2">
-					<SyntaxHighlighter
-						code={props?.value || ""}
-						language={props?.lang || "jsx"}
-						style={gh}
-					/>
+					<SyntaxHighlighter language={props?.lang || "plaintext"} style={gh}>
+						{props?.value || ""}
+					</SyntaxHighlighter>
 				</div>
 			</div>
 		);
