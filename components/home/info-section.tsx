@@ -14,7 +14,7 @@ function InfoHomeSection() {
 				className="max-w-3xl"
 			>
 				<h2 className="text-4xl sm:text-7xl font-black mb-4 sm:mb-6 leading-tight">
-					Hi, I'm Jack Pettit
+					Hi, I&apos;m Jack Pettit
 					<br />
 					<span className="bg-[#FF3366] text-white px-4 -rotate-1 inline-block mt-2">
 						Fullstack Engineer
