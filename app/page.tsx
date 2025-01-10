@@ -27,7 +27,7 @@ export default async function Home() {
 			<CounterSection
 				coffeeCount={estimatedTotalCoffees}
 				gitHubCommits={contributions}
-				blogPosts={blogs}
+				blogPosts={blogs || 0}
 			/>
 			<SkillSection />
 		</>

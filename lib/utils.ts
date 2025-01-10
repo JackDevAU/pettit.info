@@ -7,7 +7,7 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
 }
 
-export function calculateReadTime(ast) {
+export function calculateReadTime(ast: any) {
   let textContent = ""; // Concatenate all text nodes
   visit(ast, "text", (node) => {
     textContent += node.text;
@@ -33,7 +33,7 @@ export function getRandomNeoBrutalistColor() {
 }
 
 // Convert HSL to HEX
-function hslToHex(h, s, l) {
+function hslToHex(h: any, s: any, l: any) {
   s /= 100;
   l /= 100;
 
