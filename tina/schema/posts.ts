@@ -1,4 +1,4 @@
-import { Collection } from "tinacms";
+import type { Collection } from "tinacms";
 
 export const PostSchema: Collection = {
   name: "post",
@@ -34,6 +34,11 @@ export const PostSchema: Collection = {
       },
     },
     {
+      type: "reference",
+      name: "category",
+      collections: ["tag"],
+    },
+    {
       type: "datetime",
       name: "datePublished",
       label: "Published Date",
@@ -42,6 +47,7 @@ export const PostSchema: Collection = {
       type: "datetime",
       name: "lastUpdated",
       label: "Last Updated",
+      required: true
     },
     {
       type: "rich-text",

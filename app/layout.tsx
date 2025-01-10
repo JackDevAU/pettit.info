@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
-import { Public_Sans } from "next/font/google";
+import { Inter } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/layout/navbar";
-import { Toaster } from "@/components/ui/sonner";
 import { Analytics } from "@vercel/analytics/react";
+import Footer from "@/components/layout/footer";
 
-const inter = Public_Sans({ subsets: ["latin"] });
+const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
 	title: {
@@ -45,11 +45,14 @@ export default function RootLayout({
 	return (
 		<html lang="en">
 			<body className={inter.className}>
-				<Navbar />
-				<div className="container mx-auto">{children}</div>
-				<div id="drawer" />
-				<div id="modal" />
-				<Toaster />
+				<main className="min-h-screen px-4 sm:px-8 py-6 sm:py-8 max-w-8xl justify-center mx-auto">
+					<Navbar />
+					{children}
+					<Footer />
+				</main>
+				{/* <div id="drawer" />
+				<div id="modal" /> */}
+				{/* <Toaster /> */}
 				<Analytics />
 			</body>
 		</html>

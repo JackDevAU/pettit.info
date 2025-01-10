@@ -21,6 +21,13 @@ export const ProjectsSchema: Collection = {
 		},
 		{
 			type: "string",
+			name: "color",
+			ui: {
+				component: "color"
+			},
+		},
+		{
+			type: "string",
 			name: "abstract",
 			label: "Abstract",
 			required: true,

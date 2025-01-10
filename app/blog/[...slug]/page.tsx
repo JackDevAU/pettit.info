@@ -1,4 +1,3 @@
-import Typography from "@/components/util/typography";
 import client from "@/tina/__generated__/client";
 import React from "react";
 import BlogClientPage from "./client-page";
@@ -29,16 +28,7 @@ export default async function PostPage({
 		return <div className="pt-24">Post not found</div>;
 	}
 
-	return (
-		<div className="py-24">
-			<div className="flex flex-col justify-center items-center">
-				<Typography variant="huge" className="pt-8 pb-8 text-mainAccent">
-					{post.data.post.title}
-				</Typography>
-				<BlogClientPage post={post.data.post} />
-			</div>
-		</div>
-	);
+	return <BlogClientPage post={post} />;
 }
 
 export const generateStaticParams = async () => {

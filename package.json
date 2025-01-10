@@ -35,7 +35,8 @@
 		"sonner": "^1.4.41",
 		"tailwind-merge": "^2.3.0",
 		"tailwindcss-animate": "^1.0.7",
-		"tinacms": "^1.6.4"
+		"tinacms": "^1.6.4",
+		"unist-util-visit": "^5.0.0"
 	},
 	"devDependencies": {
 		"@tinacms/cli": "^1.5.46",

@@ -4,7 +4,7 @@ import Link from "next/link";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import Typography from "@/components/util/typography";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-import gh from "react-syntax-highlighter/dist/cjs/styles/prism/ghcolors";
+import gh from "react-syntax-highlighter/dist/cjs/styles/prism/material-light";
 
 export const ComponentsRenderer: Components<{}> = {
 	h1: (props) => (
@@ -29,14 +29,14 @@ export const ComponentsRenderer: Components<{}> = {
 	),
 	ul(props) {
 		return (
-			<ul {...props} className="list-disc">
+			<ul {...props} className="list-disc ">
 				{props?.children}
 			</ul>
 		);
 	},
 	ol(props) {
 		return (
-			<ol {...props} className="list-decimal">
+			<ol {...props} className="list-decimal ">
 				{props?.children}
 			</ol>
 		);
@@ -44,22 +44,30 @@ export const ComponentsRenderer: Components<{}> = {
 	code: (props) => {
 		return (
 			<code
-				className="bg-white border-1 text-sm p-1 rounded-md text-mainAccent"
+				className=" border-1 text-sm p-1 rounded-md text-[#FF3366]"
 				{...props}
 			/>
 		);
 	},
 	code_block: (props) => {
 		return (
-			<div className="flex h-full gap-2 ">
-				<div className=" border-black border-l-2">
-					<SyntaxHighlighter language={props?.lang || "plaintext"} style={gh}>
+			<div className="flex h-full gap-2 overflow-x-auto">
+				<div className="border-black border-l-2 min-w-0">
+					<SyntaxHighlighter
+						language={props?.lang || "plaintext"}
+						style={gh} // You can uncomment this line if you're using a specific style
+						customStyle={{
+							whiteSpace: "pre-wrap", // Ensures long lines wrap naturally
+							wordBreak: "break-word", // Breaks words that are too long
+						}}
+					>
 						{props?.value || ""}
 					</SyntaxHighlighter>
 				</div>
 			</div>
 		);
 	},
+
 	img: (props) => {
 		return (
 			<div className="flex flex-col items-center">

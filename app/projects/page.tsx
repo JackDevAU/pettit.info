@@ -1,8 +1,8 @@
-import Typography from "@/components/util/typography";
 import client from "@/tina/__generated__/client";
 import React from "react";
 import type { Metadata } from "next";
-import ProjectComponent from "@/components/project";
+import ProjectsTitle from "@/components/projects/projects-title";
+import ProjectCard from "@/components/projects/project-card";
 import type { Project } from "@/tina/__generated__/types";
 
 export const metadata: Metadata = {
@@ -15,11 +15,9 @@ export default async function ProjectsPage() {
 	const projects = data?.projectConnection;
 
 	return (
-		<div className="pt-24 ">
-			<Typography variant={"h1"} className="pt-8">
-				Projects
-			</Typography>
-			<div className="grid grid-cols-1">
+		<>
+			<ProjectsTitle />
+			<div className="grid grid-cols-1 gap-8 sm:gap-12">
 				{projects.totalCount > 0 ? (
 					projects?.edges
 						?.sort((a, b) => {
@@ -27,16 +25,17 @@ export default async function ProjectsPage() {
 							const orderB = b?.node?.order ?? Number.MAX_SAFE_INTEGER;
 							return orderA - orderB;
 						})
-						.map((project) => (
-							<ProjectComponent
+						.map((project, index) => (
+							<ProjectCard
+								index={index}
 								key={project?.node?.id}
-								project={{ ...project?.node } as Project}
+								project={project?.node as Project}
 							/>
 						))
 				) : (
 					<p>No Projects yet</p>
 				)}
 			</div>
-		</div>
+		</>
 	);
 }
