@@ -1,0 +1,163 @@
+---
+title: E2E Testing with React Native and Maestro
+description: >-
+  Learn how Maestro supports React Native end-to-end testing. Set up, write  
+  tests, handle environments, use tags, and address common pitfalls.
+datePublished: 2025-08-14T14:00:00.000Z
+lastUpdated: 2025-08-14T14:00:00.000Z
+---
+
+After some recent work on React Native I thought a blog post would be good to highlight the what we ended up using for e2e tests.
+
+This guide covers getting started with Maestro, writing tests, handling different environments, organizing your test suite with tags, and addressing common issues.
+
+### Writing Your First Test
+
+Maestro tests use `.yaml` files, making them readable and direct. Let's create a foundational flow to launch your app and perform a basic interaction.
+
+Create a file `e2e-tests/launch-app.yaml`:
+
+```yaml
+# e2e-tests/launch-app.yaml
+appId: com.yourcompany.yourapp # Replace with your app's actual package name (Android) or bundle ID (iOS)
+---
+- launchApp:
+    clearState: true # Ensures a fresh start for each test run
+- tapOn:
+    text: "Start Experience" # A button or text to tap to begin
+    label: "Navigating to main screen"
+```
+
+In this flow:
+
+* `appId`: Specifies your application's bundle ID (iOS) or package name (Android). **Replace `com.yourcompany.yourapp` with your app's actual ID.**
+* `launchApp`: Launches your application. `clearState: true` is useful; it ensures a clean start for each test.
+* `tapOn`: Interacts with elements by `text`, `id`, `contentDescription`, or coordinates. `label` provides a description for test reports.
+
+To run this test, execute:
+
+```shell
+maestro test e2e-tests/launch-app.yaml
+```
+
+Maestro will launch your app on a connected device or emulator and execute the steps.
+
+### Handling Environments
+
+A key feature of Maestro is its ability to manage different environments. If you have environment-specific elements like debug menus or different configurations for `dev` versus `production`, Maestro's `when` condition and environment variables are useful.
+
+Let's update `launch-app.yaml` to conditionally interact with a dev-specific setting:
+
+```yaml
+# e2e-tests/launch-app.yaml
+appId: com.yourcompany.yourapp
+---
+- launchApp:
+    clearState: true
+- runFlow:
+    when:
+      true: ${ENVIRONMENT == 'dev'} # Only run this block if ENVIRONMENT is 'dev'
+    commands:
+      - tapOn:
+          text: ".*Port.*" # Generic text like "Development Port" or a specific port number
+          label: "Opening dev application settings"
+      - swipe:
+          from:
+            text: ".*Debug Drawer.*" # Common pattern for debug menus
+          direction: DOWN
+          label: "Swiping away settings drawer"
+- tapOn:
+    text: "Start Experience"
+    label: "Navigating to main screen"
+```
+
+This `runFlow` block, with a `when` condition, executes only if the `ENVIRONMENT` variable is `dev`.
+
+Set environment variables for Maestro by passing them as arguments:
+
+```shell
+maestro test e2e-tests/launch-app.yaml --env ENVIRONMENT=dev
+```
+
+If you run without `--env ENVIRONMENT=dev`, those `runFlow` commands will be skipped, making your tests flexible.
+
+### Organizing with Tags
+
+As your test suite grows, you'll need to categorize and run subsets of tests. Tags help organize your flows with keywords (e.g., `android`, `ios`, `login`, `checkout`, `google-pay`).
+
+Let's create a specific test flow that reuses our `launch-app.yaml` as a "sub-flow":
+
+```yaml
+# e2e-tests/google-pay/google-pay-button-flow-success.yaml
+appId: com.yourcompany.yourapp
+tags:
+  - google-pay
+  - android
+---
+- runFlow:
+    file: ../launch-app.yaml # Reusing our launch-app flow
+- tapOn:
+    id: "com.android.exampleapp:id/main_button" # Use a generic ID here
+    label: "Tap on primary action button"
+- tapOn:
+    text: "Proceed" # Generic text for a confirmation button
+    label: "Tap on confirmation button"
+- assertVisible: "Action Successful!" # Asserting a success message
+```
+
+The `tags` array at the top marks this test as `google-pay` and `android`. `runFlow` executes `launch-app.yaml` first, promoting reusability.
+
+To run only tests tagged `google-pay`, use:
+
+```shell
+maestro test --tags google-pay
+```
+
+You can combine tags (e.g., `--tags google-pay,ios`).
+
+Maestro allows defining flows to include in your test run via a `config.yaml` file in your `e2e-tests` directory:
+
+```yaml
+# e2e-tests/config.yaml
+flows:
+  - "credit-card/*" # Include all flows in the 'credit-card' directory
+  - "google-pay/*" # Include all flows in the 'google-pay' directory
+```
+
+When you run `maestro test`, it automatically discovers and runs all flows specified in `config.yaml`.
+
+### Maestro Considerations
+
+Maestro is effective, but consider these points:
+
+1. **Selector Precision:**
+   * **Prioritize IDs:** Add `testID` props to your React Native components. Maestro targets these reliably using `id: "yourTestId"`. This is the most stable method.
+   * **Text and Content Descriptions:** `text` and `contentDescription` (accessibility labels) are fallbacks. Be aware of localization or text changes.
+   * **Regex for Flexibility:** Using `text: ".*Port.*"` with regex (`.*` wildcard) can make text-based selectors more resilient.
+2. **Timing:**
+   * Apps are not always instantaneous. You might need to wait for elements to appear or animations to complete.
+   * `waitForAnimation`: Waits until no animations run. Useful after navigation or state changes.
+   * `sleep`: A direct pause. Use sparingly, as it slows tests.
+   * `assertVisible`: Maestro waits for an element to become visible before asserting it.
+3. **Clear State:**
+   * `launchApp: clearState: true` is effective for isolated test runs. If chaining flows that rely on previous app state, set it to `false` in subsequent `runFlow` calls within a larger test suite.
+4. **Debugging Maestro:**
+   * Maestro provides detailed logging. Failed tests often include a screenshot at the failure point.
+   * Run tests with `maestro test --log-level debug` for more verbose output.
+   * Use `maestro studio` to build flows interactively and find selectors.
+5. **Flaky Tests:**
+   * A common challenge in E2E testing. Intermittent failures often indicate a timing issue or a non-robust selector. Review `tapOn`, `assertVisible`, and consider adding `waitForAnimation` or `sleep` commands if necessary.
+
+### Conclusion
+
+This guide covered:
+
+* **Getting Started:** Installing Maestro and initializing your project.
+* **First Test:** Writing a flow to launch your app and interact.
+* **Environmental Handling:** Using `when` conditions and environment variables for dynamic testing.
+* **Tags and Organization:** Structuring your test suite with tags and `config.yaml`.
+* **Considerations:** Tips for selectors, timing, and debugging.
+
+Maestro simplifies E2E testing for React Native, allowing focus on development. Write tests and ship high-quality apps.
+
+Happy testing!
