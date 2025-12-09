@@ -16,6 +16,10 @@ export async function GET() {
 	if (posts.data.postConnection.totalCount > 0) {
 		posts.data.postConnection.edges?.map((postNode) => {
 			const post = postNode?.node;
+
+			// Skip draft posts
+			if (post?.draft) return;
+
 			feed.item({
 				title: post?.title || "",
 				guid: `https://pettit.info/blog/${post?._sys.filename}`,

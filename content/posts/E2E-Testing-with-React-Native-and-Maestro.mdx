@@ -3,14 +3,15 @@ title: E2E Testing with React Native and Maestro
 description: >-
   Learn how Maestro supports React Native end-to-end testing. Set up, write  
   tests, handle environments, use tags, and address common pitfalls.
-draft: true
+draft: false
+category: content/tags/React-Native.mdx
 datePublished: 2025-08-14T14:00:00.000Z
 lastUpdated: 2025-08-14T14:00:00.000Z
 ---
 
-After some recent work on React Native I thought a blog post would be good to highlight the what we ended up using for e2e tests.
+After some recent work on React Native I thought a blog post would be good to highlight what we ended up using for e2e tests.
 
-This guide covers getting started with Maestro, writing tests, handling different environments, organizing your test suite with tags, and addressing common issues.
+We will cover getting started with Maestro, writing tests, handling different environments, organizing your test suite with tags, and addressing common issues.
 
 ### Writing Your First Test
 
@@ -149,16 +150,6 @@ Maestro is effective, but consider these points:
 5. **Flaky Tests:**
    * A common challenge in E2E testing. Intermittent failures often indicate a timing issue or a non-robust selector. Review `tapOn`, `assertVisible`, and consider adding `waitForAnimation` or `sleep` commands if necessary.
 
-### Conclusion
+### Links:
 
-This guide covered:
-
-* **Getting Started:** Installing Maestro and initializing your project.
-* **First Test:** Writing a flow to launch your app and interact.
-* **Environmental Handling:** Using `when` conditions and environment variables for dynamic testing.
-* **Tags and Organization:** Structuring your test suite with tags and `config.yaml`.
-* **Considerations:** Tips for selectors, timing, and debugging.
-
-Maestro simplifies E2E testing for React Native, allowing focus on development. Write tests and ship high-quality apps.
-
-Happy testing!
+* [https://maestro.dev/](https://maestro.dev/)

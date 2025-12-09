@@ -4,38 +4,65 @@ import BlogClientPage from "./client-page";
 
 export async function generateMetadata({
 	params,
-}: { params: { slug: string[] } }) {
-	const project = await client.queries.post({
-		relativePath: `${params.slug}.mdx`,
-	});
+}: { params: Promise<{ slug: string[] }> }) {
+	const { slug } = await params;
+	const relativePath = `${slug.join("/")}.mdx`;
 
-	return {
-		title: project.data.post.title,
-		description: project.data.post.description,
-	};
+	try {
+		const project = await client.queries.post({
+			relativePath,
+		});
+
+		return {
+			title: project.data.post.title,
+			description: project.data.post.description,
+		};
+	} catch (error) {
+		return {
+			title: "Post Not Found",
+		};
+	}
 }
+
+import { calculateReadTime } from "@/lib/utils";
 
 export default async function PostPage({
 	params,
 }: {
-	params: { slug: string[] };
+	params: Promise<{ slug: string[] }>;
 }) {
-	const post = await client.queries.post({
-		relativePath: `${params.slug}.mdx`,
-	});
+	const { slug } = await params;
+	const relativePath = `${slug.join("/")}.mdx`;
 
-	if (!post.data.post) {
-		return <div className="pt-24">Post not found</div>;
+	try {
+		const { data, query, variables } = await client.queries.post({
+			relativePath,
+		});
+
+		if (!data.post) {
+			return <div className="pt-24 text-center text-xl font-bold">Post not found</div>;
+		}
+
+		// Calculate read time on server
+		const serverReadTime = calculateReadTime(data.post.body);
+
+		return <BlogClientPage data={data} query={query} variables={variables} serverReadTime={serverReadTime} />;
+	} catch (error) {
+		console.error("Error fetching post:", error);
+		return <div className="pt-24 text-center text-xl font-bold">Error loading post.</div>;
 	}
-
-	return <BlogClientPage post={post} />;
 }
 
 export const generateStaticParams = async () => {
-	const pages = await client.queries.postConnection();
-	const paths = pages.data?.postConnection?.edges?.map((edge) => ({
-		slug: edge?.node?._sys.breadcrumbs,
-	}));
+	try {
+		const pages = await client.queries.postConnection();
+		const paths = pages.data?.postConnection?.edges?.map((edge) => ({
+			slug: edge?.node?._sys.breadcrumbs,
+		}));
 
-	return paths || [];
+		return paths || [];
+	} catch (error) {
+		console.error("Error generating static params for blog:", error);
+		return [];
+	}
 };

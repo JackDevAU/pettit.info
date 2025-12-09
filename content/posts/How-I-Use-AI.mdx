@@ -1,0 +1,70 @@
+---
+title: 'How I Use AI: Accelerating Development with Manifest'
+description: >-
+  Discover how I leverage AI to streamline my development workflow, from code
+  review to testing, using my new tool Manifest and the OpenCode SDK.
+draft: false
+category: content/tags/Electron.mdx
+datePublished: 2025-12-08T14:00:00.000Z
+lastUpdated: 2025-12-08T14:00:00.000Z
+---
+
+As developers, we are always looking for ways to work smarter, not harder. With the rise of Large Language Models (LLMs), we now have powerful assistants that can help with everything from scaffolding features to reviewing pull requests. The real challenge is figuring out how to plug them into our day-to-day workflow without constant context switching or losing control of the code.
+
+That question led me to build **Manifest**, an AI-powered Electron app built with the **OpenCode SDK**. OpenCode is an open source coding agent framework that lets you connect any model, such as Claude, GPT, Gemini, or even free local models, directly to your development workflow.
+
+Here is how I use it to speed up my work while still staying in control.
+
+## 1. Parallel Workflows: The Power of Multi-Tasking
+
+One of the biggest bottlenecks with traditional AI coding tools is waiting. You ask the AI to generate a component, then sit there watching the cursor blink.
+
+**How I use AI:** With Manifest and OpenCode, I work on multiple features and code reviews at the same time. Because the SDK supports multiple sessions, I do not have to wait for one task to complete before starting another.
+
+* **Session A:** "Refactor the authentication logic to use the new provider." (AI is coding...)
+* **Session B:** "Review PR #42 and explain the state management changes." (AI is analyzing...)
+* **Session C:** I am manually fixing a bug in a separate file.
+
+This parallel approach turns AI from a "wait and see" tool into a real force multiplier. I can keep my own flow going while the agents handle the heavy lifting in the background.
+
+## 2. The Feedback Loop: Owning the Code
+
+There is a real risk with AI generated code: you commit it without fully understanding it. That leaves you with "magic" code that nobody feels confident changing later.
+
+**My philosophy:** The goal is not just to get code written. The goal is to *own* the code.
+
+**How I use AI:** I have designed my workflow around a strict feedback loop:
+
+1. **Ask:** I describe the problem or feature.
+2. **Review:** The AI generates a solution.
+3. **Iterate:** I do not accept it blindly. I ask for fixes, clarifications, and alternative approaches.
+4. **Quiz:** This is the key step. Before I commit any AI generated code, I run a "Quiz" step in my workflow. The AI quizzes *me* on the changes it just made. If I cannot explain why a specific line exists or how a function works, I am not allowed to commit it.
+
+This process keeps me as the expert in my own codebase, even when I am not the one typing every character.
+
+## 3. Custom Agents for Specific Roles
+
+Not every task needs the same "generalist developer" persona. Sometimes you get better results from agents that have a narrow, well defined job.
+
+**How I use AI:** OpenCode lets me define **Custom Agents** with specific system prompts and tool access.
+
+* **The Code Review Agent:** This agent does not write code. It only has read access and a prompt that focuses on security, performance, and maintainability. Its job is to ruthlessly critique diffs.
+* **The Tester Agent:** This agent exists purely to write and run unit tests. It looks for edge cases that a "builder" agent might ignore in its optimism.
+
+By switching between these specialized agents, I get better outcomes than I would if I tried to make one generic prompt handle every responsibility.
+
+## 4. Optional Isolation with Docker
+
+Sometimes you need to verify changes without risking your local environment.
+
+**How I use AI:** I treat Docker as a powerful add on that I can use when needed. If I am unsure about a complex migration or a script that touches the filesystem, I ask the agent to spin up a Docker container.
+
+I can then say: "Spin up a container and test this migration script."
+
+The agent runs the code in complete isolation. If it fails, my machine is safe. If it works, I gain the confidence to run the same change locally. It becomes a safe sandbox for experiments.
+
+## Conclusion
+
+AI is not about automating yourself out of a job. It is about removing friction so you can focus on architecture, design decisions, and real problem solving. By building tools like Manifest on top of the OpenCode SDK, I have created a workflow that is faster, safer, and, most importantly, keeps me in the driver's seat.
+
+If you are interested in checking out the project, head over to the [Manifest project page](/projects/Manifest).

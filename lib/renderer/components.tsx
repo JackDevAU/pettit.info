@@ -4,7 +4,7 @@ import Link from "next/link";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import Typography from "@/components/util/typography";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-import gh from "react-syntax-highlighter/dist/cjs/styles/prism/material-light";
+import { vscDarkPlus } from "react-syntax-highlighter/dist/cjs/styles/prism";
 
 export const ComponentsRenderer: Components<{}> = {
 	h1: (props) => (
@@ -23,43 +23,65 @@ export const ComponentsRenderer: Components<{}> = {
 		</Typography>
 	),
 	p: (props) => (
-		<Typography variant="p" {...props}>
+		<Typography variant="p" as="div" {...props}>
 			{props?.children}
 		</Typography>
 	),
 	ul(props) {
 		return (
-			<ul {...props} className="list-disc ">
+			<Typography variant="list" as="ul" {...props}>
 				{props?.children}
-			</ul>
+			</Typography>
 		);
 	},
 	ol(props) {
 		return (
-			<ol {...props} className="list-decimal ">
+			<Typography variant="list" as="ol" className="list-decimal" {...props}>
 				{props?.children}
-			</ol>
+			</Typography>
+		);
+	},
+	li(props) {
+		return (
+			<Typography variant="li" as="li" {...props}>
+				{props?.children}
+			</Typography>
 		);
 	},
 	code: (props) => {
 		return (
-			<code
-				className=" border-1 text-sm p-1 rounded-md text-[#FF3366]"
-				{...props}
-			/>
+			<Typography variant="inlineCode" as="code" {...props}>
+				{props?.children}
+			</Typography>
 		);
 	},
 	code_block: (props) => {
 		return (
-			<div className="flex h-full gap-2 overflow-x-auto">
-				<div className="border-black border-l-2 min-w-0">
+			<div className="my-8 rounded-xl overflow-hidden bg-black text-white p-6 shadow-2xl">
+				<div className="flex items-center gap-2 mb-4 border-b border-white/10 pb-4">
+					<div className="flex gap-1.5">
+						<div className="w-3 h-3 rounded-full bg-red-500/80" />
+						<div className="w-3 h-3 rounded-full bg-yellow-500/80" />
+						<div className="w-3 h-3 rounded-full bg-green-500/80" />
+					</div>
+					<span className="ml-auto text-xs font-mono font-bold text-neutral-500 uppercase tracking-widest">
+						{props?.lang || "CODE"}
+					</span>
+				</div>
+				<div className="overflow-x-auto">
 					<SyntaxHighlighter
 						language={props?.lang || "plaintext"}
-						style={gh} // You can uncomment this line if you're using a specific style
+						style={vscDarkPlus}
 						customStyle={{
-							whiteSpace: "pre-wrap", // Ensures long lines wrap naturally
-							wordBreak: "break-word", // Breaks words that are too long
+							background: "transparent",
+							padding: 0,
+							margin: 0,
+							fontSize: "0.9rem",
+							lineHeight: "1.5",
+							fontFamily: "monospace",
 						}}
+						wrapLines={true}
+						wrapLongLines={true}
 					>
 						{props?.value || ""}
 					</SyntaxHighlighter>

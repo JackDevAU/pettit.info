@@ -7,18 +7,27 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
 }
 
-export function calculateReadTime(ast: any) {
-  let textContent = ""; // Concatenate all text nodes
-  visit(ast, "text", (node) => {
-    textContent += node.text;
+export function calculateReadTime(content: any): string {
+  if (!content) return "1 MIN READ";
+  
+  // Simple recursive function to extract text from Tina AST
+  const extractText = (node: any): string => {
+    if (typeof node === 'string') return node;
+    if (!node || !node.children) return '';
+    if (Array.isArray(node.children)) {
+      return node.children.map((child: any) => 
+        child.text || extractText(child)
+      ).join(' ');
+    }
+    return '';
+  };
 
-  });
-
-  const wordCount = textContent.split(/\s+/).filter(Boolean).length; // Count non-empty words
-  const wordsPerMinute = 100; // Average reading speed
-  const readTime = Math.ceil(wordCount / wordsPerMinute); // Round up to the nearest minute
-
-  return `${readTime || 1} min read`; // Ensure at least 1 minute
+  const text = extractText(content);
+  const wordsPerMinute = 200;
+  const words = text.trim().split(/\s+/).length;
+  const minutes = Math.ceil(words / wordsPerMinute);
+  
+  return `${minutes} MIN READ`;
 }
 
 

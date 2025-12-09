@@ -38,5 +38,13 @@ export const TagsSchema: Collection = {
 				defaultValue: true,
 			},
 		},
+		{
+			type: "boolean",
+			name: "featured",
+			label: "Featured (bold on skills page)",
+			ui: {
+				defaultValue: false,
+			},
+		},
 	],
 };

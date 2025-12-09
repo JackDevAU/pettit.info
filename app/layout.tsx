@@ -44,15 +44,15 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang="en">
-			<body className={inter.className}>
-				<main className="min-h-screen px-4 sm:px-8 py-6 sm:py-8 max-w-8xl justify-center mx-auto">
+			<body className={`${inter.className} bg-[#F2F2F2] min-h-screen overflow-x-hidden`}>
+				<div className="bg-noise" />
+				<main className="relative w-full min-h-screen flex flex-col">
 					<Navbar />
-					{children}
+					<div className="flex-grow px-4 sm:px-8 lg:px-12 max-w-[1600px] mx-auto w-full">
+						{children}
+					</div>
 					<Footer />
 				</main>
-				{/* <div id="drawer" />
-				<div id="modal" /> */}
-				{/* <Toaster /> */}
 				<Analytics />
 			</body>
 		</html>
