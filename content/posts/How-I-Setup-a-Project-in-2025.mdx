@@ -1,10 +1,12 @@
 ---
 title: How I Setup a Project in 2025
-description: A quick look at how I am spinning up new .NET and TypeScript projects at the end of 2025.
-draft: true
+description: >-
+  A quick look at how I am spinning up new .NET and TypeScript projects at the
+  end of 2025.
+draft: false
 category: content/tags/Architecture-Stack.mdx
-datePublished: 2025-12-20T14:00:00.000Z
-lastUpdated: 2025-12-20T14:00:00.000Z
+datePublished: 2025-12-15T14:00:00.000Z
+lastUpdated: 2025-12-15T14:00:00.000Z
 ---
 
 As the year wraps up, I thought it would be interesting to capture how I am currently spinning up new projects. This will almost definitely change again in a year or two, but right now these are the tools and patterns I keep reaching for.
@@ -21,26 +23,26 @@ Aspire gives me a nice opinionated way to structure distributed apps and service
 
 For APIs I have fallen in love with **FastEndpoints**. I find myself choosing it over:
 
-- Minimal APIs
-- Older frameworks and templates I am used to, like **SSW VSA**
-- Clean Architecture style templates such as the **SSW Clean Architecture Template**
+* Minimal APIs
+* Older frameworks and templates I am used to, like **SSW VSA**
+* Clean Architecture style templates such as the **SSW Clean Architecture Template**
 
 FastEndpoints gives me:
 
-- A clear way to model endpoints without a lot of ceremony
-- Good separation of concerns without needing a huge amount of boilerplate
-- A nice balance between structure and flexibility compared to raw minimal APIs
+* A clear way to model endpoints without a lot of ceremony
+* Good separation of concerns without needing a huge amount of boilerplate
+* A nice balance between structure and flexibility compared to raw minimal APIs
 
 A few useful links if you want to explore these options:
 
-- [FastEndpoints](https://fast-endpoints.com/)
-- [SSW Vertical Slice Architecture](https://github.com/SSWConsulting/SSW.VerticalSliceArchitecture)
-- [SSW Clean Architecture Template](https://github.com/SSWConsulting/SSW.CleanArchitecture)
+* [FastEndpoints](https://fast-endpoints.com/)
+* [SSW Vertical Slice Architecture](https://github.com/SSWConsulting/SSW.VerticalSliceArchitecture)
+* [SSW Clean Architecture Template](https://github.com/SSWConsulting/SSW.CleanArchitecture)
 
 At the moment, a typical new .NET backend for me looks like:
 
-- An Aspire solution to model the overall app and services
-- A FastEndpoints based API project for the main HTTP surface
+* An Aspire solution to model the overall app and services
+* A FastEndpoints based API project for the main HTTP surface
 
 ## TypeScript: Turborepo as the Base
 
@@ -48,16 +50,15 @@ For TypeScript based work, I have standardised on **Turborepo**.
 
 When I need a monorepo or know I will have multiple apps and packages, Turborepo gives me:
 
-- A predictable way to share packages and utilities
-- Caching and task pipelines that make development and CI feel much faster
-- A structure that scales from one app to several without a big migration later
+* A predictable way to share packages and utilities
+* Caching and task pipelines that make development and CI feel much faster
+* A structure that scales from one app to several without a big migration later
 
 Most greenfield TypeScript projects now start life as a Turborepo, even if I am only spinning up a single app to begin with.
 
 A useful link if you want to dig into Turborepo:
 
-- [Turborepo](https://turborepo.com/)
-
+* [Turborepo](https://turborepo.com/)
 
 ## Web: Next.js plus separate APIs
 
@@ -65,19 +66,19 @@ I still use **Next.js** for almost all website frontends. It is familiar, fast, 
 
 One change in 2025 is how I think about APIs for these apps. I am moving away from putting everything into the built in `app/api` or `pages/api` routes in Next.js. Instead, I prefer to:
 
-- Use libraries like **Hono** or **Elysia** to define APIs
-- Integrate them with Next.js API routes or deploy them as separate services when that makes more sense
+* Use libraries like **Hono** or **Elysia** to define APIs
+* Integrate them with Next.js API routes or deploy them as separate services when that makes more sense
 
 This gives me:
- 
-- A cleaner separation between the UI and the API
-- Frameworks that are focused on HTTP handling, routing, and middleware
-- Flexibility to move the API to a separate deployment later without rewriting everything
+
+* A cleaner separation between the UI and the API
+* Frameworks that are focused on HTTP handling, routing, and middleware
+* Flexibility to move the API to a separate deployment later without rewriting everything
 
 A couple of useful links for these API frameworks:
 
-- [Hono](https://hono.dev/)
-- [Elysia](https://elysiajs.com/)
+* [Hono](https://hono.dev/)
+* [Elysia](https://elysiajs.com/)
 
 ## Mobile: Expo and React Native
 
@@ -85,22 +86,21 @@ For mobile apps I still reach for **React Native**, but these days I default to 
 
 Expo gives me:
 
-- A batteries included toolchain for building, testing, and deploying React Native apps
-- Managed workflows that handle a lot of native build complexity for me
-- A fast feedback loop when I am iterating on UI or behaviour
+* A batteries included toolchain for building, testing, and deploying React Native apps
+* Managed workflows that handle a lot of native build complexity for me
+* A fast feedback loop when I am iterating on UI or behaviour
 
 If I know from day one that an app will need heavy custom native work I will still consider a bare React Native setup, but for most projects in 2025 Expo gets me to something shippable much faster.
 
 ## Hosting and Infrastructure: Vercel and Cloudflare
 
-
 I am still hosting my sites on **Vercel**, with DNS handled through **Cloudflare**.
 
 This setup works well for me because:
 
-- Vercel gives me a very smooth developer experience for Next.js projects
-- Cloudflare handles DNS, some free metrics, and email routing
-- Managing domains and records in Cloudflare feels easier and more centralised than relying only on registrar tooling
+* Vercel gives me a very smooth developer experience for Next.js projects
+* Cloudflare handles DNS, some free metrics, and email routing
+* Managing domains and records in Cloudflare feels easier and more centralised than relying only on registrar tooling
 
 Overall this combination lets me spin up new projects quickly, with sensible defaults for performance and reliability, without needing to manage a huge amount of infrastructure myself.
 
