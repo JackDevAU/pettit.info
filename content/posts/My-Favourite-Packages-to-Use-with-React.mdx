@@ -1,7 +1,9 @@
 ---
 title: My Favourite Packages to Use with React
-description: A high level look at the libraries and tools I keep reaching for in modern React projects.
-draft: true
+description: >-
+  A high level look at the libraries and tools I keep reaching for in modern
+  React projects.
+draft: false
 category: content/tags/React.mdx
 datePublished: 2025-12-22T14:00:00.000Z
 lastUpdated: 2025-12-22T14:00:00.000Z
@@ -19,17 +21,16 @@ For local UI state, I prefer **Zustand** over heavier state managers. It gives m
 
 A few useful links:
 
-- [TanStack Query](https://tanstack.com/query/latest)
-- [Zustand](https://github.com/pmndrs/zustand)
-
+* [TanStack Query](https://tanstack.com/query/latest)
+* [Zustand](https://github.com/pmndrs/zustand)
 
 ## Tooling: ni, taze, and Module Inspector
 
 On the tooling side, I use a few helpers around npm and dependencies:
 
-- **ni** helps me manage package managers and `npm` style commands without thinking too hard about whether a project uses `npm`, `pnpm`, or `yarn`.
-- **taze** is great for checking and updating dependencies in a more controlled way than blindly running `npm update`.
-- **Module Inspector** is not a package I install in projects, but a tool I use to inspect bundles and understand what is actually shipping to the browser.
+* **ni** helps me manage package managers and `npm` style commands without thinking too hard about whether a project uses `npm`, `pnpm`, or `yarn`.
+* **taze** is great for checking and updating dependencies in a more controlled way than blindly running `npm update`.
+* **Module Inspector** is not a package I install in projects, but a tool I use to inspect bundles and understand what is actually shipping to the browser.
 
 These tools are small quality of life improvements, but across many projects they add up to a smoother workflow.
 
@@ -43,9 +44,9 @@ I am biased here because I help maintain TinaCMS, but that also means I understa
 
 When I need a typed data layer in TypeScript heavy React projects, **Drizzle ORM** is my current pick. It gives me:
 
-- A nice, typed schema definition experience
-- Strongly typed queries without a lot of magic
-- A migration story that fits well into modern DevOps flows
+* A nice, typed schema definition experience
+* Strongly typed queries without a lot of magic
+* A migration story that fits well into modern DevOps flows
 
 It is not the only option out there, but it strikes a good balance between low level SQL control and higher level ergonomics.
 
@@ -63,8 +64,7 @@ It works well with complex forms, integrates nicely with UI libraries like shadc
 
 Useful links:
 
-- [React Hook Form](https://react-hook-form.com/)
-
+* [React Hook Form](https://react-hook-form.com/)
 
 ## Auth: Better Auth
 
@@ -76,8 +76,7 @@ It aims to keep the auth story simple without hiding everything behind a wall of
 
 Useful links:
 
-- [Better Auth](https://github.com/better-auth/better-auth)
-
+* [Better Auth](https://github.com/better-auth/better-auth)
 
 ## Developer Experience: biomejs
 
@@ -87,18 +86,17 @@ It combines formatting and linting in a single, fast tool, which reduces the amo
 
 Useful links:
 
-- [biomejs](https://biomejs.dev/)
-
+* [biomejs](https://biomejs.dev/)
 
 ## Where these fit together
 
 These packages do not all show up in every single project, but if you look at a typical React app I have touched in 2025 you will probably see a combination of:
 
-- TanStack Query and/or Zustand for data and state
-- TinaCMS if there is any serious content editing story
-- Drizzle ORM on the server side
-- shadcn/ui, React Hook Form, and Better Auth in the UI layer
-- biomejs keeping everything formatted and linted
-- ni, taze, and Module Inspector hovering around the edges to keep the tooling experience smooth
+* TanStack Query and/or Zustand for data and state
+* TinaCMS if there is any serious content editing story
+* Drizzle ORM on the server side
+* shadcn/ui, React Hook Form, and Better Auth in the UI layer
+* biomejs keeping everything formatted and linted
+* ni, taze, and Module Inspector hovering around the edges to keep the tooling experience smooth
 
 This list will definitely change over time, but right now these are the tools that make building React apps feel fun and productive.
