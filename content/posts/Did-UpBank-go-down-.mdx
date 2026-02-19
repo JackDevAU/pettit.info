@@ -6,16 +6,23 @@ category: content/tags/Cloudflare.mdx
 lastUpdated: 2026-02-18T14:00:00.000Z
 ---
 
-Roughly 9 days ago, while i was trying to access my mobile banking app of choice. Some might say, the best banking app. It just wasn't loading?!
+Roughly 9 days ago i tried to open my mobile banking app of choice, Up. It just wasn’t loading?!
 
-I posted on Discord, asked family and friends to check if its just a me issue…?!
+At first i’m thinking… ok, is this just a me issue? I posted on Discord, asked family and friends to check. Same thing.
 
-But it wasn't just a me issue… within about 20minutes I see the first post up on Reddit about it. Then many more… But while Reddit is a good place to check these types of outages and express opinions. It's not always the most reliable place to go nor is it have a quick enough response time. 
+So i search for “up bank status”… and it’s just this plain website saying there is no outage at all?! Meanwhile the app still isn’t loading.
 
-So, I search for “up bank status”, but its just a plain website saying there is no outage at all?! 
+Then i hit Reddit. Within about 20 minutes i see the first post about it. Then many more. So yeah, definitely not just me.
 
-While i was disappointed, this left an opening in the market, why don't i just make this myself. I had just make an api and budgeting app for Up (TODO: ADD LINKS HERE)
+Now, Reddit is a great place to confirm these types of outages and read opinions, but it’s not always the most reliable place to go. It also doesn’t give you a quick, clear answer with actual numbers.
 
-Why not add an uptime tracker as well… so i did just that. Introduce: [uptime.jackpettit.dev](https://uptime.jackpettit.dev/)
+That was the moment i realised there’s a gap here. Why don’t i just build this myself?
 
-A way we can now actually see some stats over the past 90 days! 
+I’d just made an API package ([@jackdevau/up-api](https://www.npmjs.com/package/@jackdevau/up-api)) for typescript and a budgeting app for Up ([up.jackpettit.dev](https://up.jackpettit.dev)), so i thought… why not add an uptime tracker as well. So i did.
+
+Introducing: [uptime.jackpettit.dev](https://uptime.jackpettit.dev)
+
+It’s a simple way to see stats over the past 90 days:
+
+* Service uptime
+* Response time to the Cloudflare server
