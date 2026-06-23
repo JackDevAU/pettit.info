@@ -1,17 +1,15 @@
 ---
 title: Just Fix It Yourself
-description: >-
-  Inspired by TJ DeVries' talk on building software that fixes things for you.
-  If something annoys you about your setup, it's never been cheaper (or more
-  worth it) to just fix it yourself.
+description: 'Inspired by TJ DeVries'' talk on building software that fixes things for you. If something annoys you about your setup, it''s never been cheaper (or more worth it) to just fix it yourself.'
 draft: false
+category: ''
 datePublished: 2026-06-23T14:00:00.000Z
 lastUpdated: 2026-06-23T14:00:00.000Z
 ---
 
 There's a talk by [TJ DeVries](https://www.youtube.com/watch?v=HOO_yaidVWk) that I saw a couple weeks back. It's about what he calls a PDE, a personalised development environment, and the rough idea is that you build a setup you actually understand instead of putting up with one you don't. The part that interested me was how he is about the small stuff, the little annoyances that would take you all of 30 seconds to deal with but somehow sit there bugging you for three days because you never quite get round to them.
 
-The bit that really stuck was him pointing out how cheap all of this has gotten to fix. At one point he asks an LLM to write a little Neovim function for him on the spot, and it worked he keeps it, and if it doesn't, he just gets rid of it and gets on with his day.
+The bit that really stuck was him pointing out how cheap all of this has gotten to fix. At one point he asks an LLM to write a little Neovim function for him on the spot, and if it worked, he keeps it, and if it doesn't, he just gets rid of it and gets on with his day.
 
 Since watching this video a couple weeks back, I've started implementing what he said, making tiny tools that are useful just to me. And I should say up front, very little of this is me sitting there hand-writing clever code. It's all heavily AI-assisted, which is sort of the whole reason any of it is worth writing about.
 
@@ -23,15 +21,15 @@ The trouble with doing this once is that you immediately start spotting everythi
 
 A few from the last little while:
 
-- **JMUX**, a little tmux session aggregator. I'm forever jumping between projects and I'd lost all patience with hunting around for the right session, so I made something that gathers them up in one place. I can't take credit for the name, that was [Dan](https://dandoescode.com)
-- **A window manager**, because none of the existing ones tiled windows the way I wanted, and it turned out to be less effort to write my own than to keep wrestling with someone else's defaults
-- **A nicer way to review GitHub PRs**, because reading a big diff in GitHub itself makes me want to.... anyway, mine just shoves the diff over to [diffs.com](https://diffs.com), which is a much friendlier place to actually read the thing
+* **JMUX**, a little tmux session aggregator. I'm forever jumping between projects and I'd lost all patience with hunting around for the right session, so I made something that gathers them up in one place. I can't take credit for the name, that was [Dan](https://dandoescode.com)
+* **A window manager**, because none of the existing ones tiled windows the way I wanted, and it turned out to be less effort to write my own than to keep wrestling with someone else's defaults
+* **A nicer way to review GitHub PRs**, because reading a big diff in GitHub itself makes me want to.... anyway, mine just shoves the diff over to [diffs.com](https://diffs.com), which is a much friendlier place to actually read the thing
 
-There's a pile of others I'll spare you, mostly one-off scripts that each do a single small job. On their own none of them would impress anybody but they are solving all the small pains that I encounter every day 
+There's a pile of others I'll spare you, mostly one-off scripts that each do a single small job. On their own none of them would impress anybody but they are solving all the small pains that I encounter every day
 
 The reason I'd bother writing any of this down is that the cost of throwing together a quick fix has fallen off a cliff. TJ uses AI to spin his up and honestly so do I, pretty much constantly at this point. I describe roughly what I'm after, let it do most of the actual typing, then prod at it until it does what I meant rather than what I literally said (though after a recent discussion with Gordon, this same trick applies to Ai skills). The distance between something annoying me and that thing being sorted has more or less disappeared.
 
-You hit the problem, throw something together, run it, watch it fall over, tweak it, and a coffee later it's working. 
+You hit the problem, throw something together, run it, watch it fall over, tweak it, and a coffee later it's working.
 
 The bar for "is this even worth my time" drops so low, something that only mildly irritates me? Yeah, go on, fix it. Something costing me ten seconds a day? Why not. There's nobody to justify it to anyway.
 
