@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 import Navbar from "@/components/layout/navbar";
 import { Analytics } from "@vercel/analytics/react";
@@ -53,6 +54,7 @@ export default function RootLayout({
 					<Footer />
 				</main>
 				<Analytics />
+				<Script defer src="https://hits.jackpettit.dev/tracker.js" />
 			</body>
 		</html>
 	);
