@@ -2,7 +2,9 @@
 import { motion } from "framer-motion";
 import React from "react";
 import Footer from "../layout/footer";
-import { Github, Linkedin, Mail, Twitter } from "lucide-react";
+import { Mail } from "lucide-react";
+import { FaGithub, FaLinkedin } from "react-icons/fa";
+import { FaXTwitter } from "react-icons/fa6";
 
 function InfoHomeSection() {
 	return (
@@ -38,7 +40,7 @@ function InfoHomeSection() {
 							rel="noopener noreferrer"
 							className="bg-white p-2 border-4 border-black shadow-brutal hover:-translate-y-1 transition-transform"
 						>
-							<Github className="w-5 h-5 sm:w-6 sm:h-6" />
+							<FaGithub className="w-5 h-5 sm:w-6 sm:h-6" />
 						</a>
 						<a
 							href={"https://www.linkedin.com/in/jackdevau/"}
@@ -46,13 +48,13 @@ function InfoHomeSection() {
 							rel="noopener noreferrer"
 							className="bg-white p-2 border-4 border-black shadow-brutal hover:-translate-y-1 transition-transform"
 						>
-							<Linkedin className="w-5 h-5 sm:w-6 sm:h-6" />
+							<FaLinkedin className="w-5 h-5 sm:w-6 sm:h-6" />
 						</a>
 						<a
 							href={"https://twitter.com/SSWJackPettit"}
 							className="bg-white p-2 border-4 border-black shadow-brutal hover:-translate-y-1 transition-transform"
 						>
-							<Twitter className="w-5 h-5 sm:w-6 sm:h-6" />
+							<FaXTwitter className="w-5 h-5 sm:w-6 sm:h-6" />
 						</a>
 					</div>
 				</section>

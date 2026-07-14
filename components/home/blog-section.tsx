@@ -4,7 +4,7 @@ import client from "@/tina/__generated__/client";
 
 export default async function BlogSection() {
 	// Explicitly typing as any[] to avoid implicit any errors with complex generated types
-	// eslint-disable-next-line @typescript-eslint/no-explicit-any
+	 
 	let posts: any[] = [];
 
 	try {

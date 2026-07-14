@@ -5,7 +5,7 @@ import client from "@/tina/__generated__/client";
 
 export default async function ProjectsPage() {
   // Explicitly typing as any[] to avoid implicit any errors with complex generated types
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+   
   let sortedProjects: any[] = [];
 
   try {
@@ -67,9 +67,10 @@ export default async function ProjectsPage() {
                 {project?.coverImage && (
                   <div className="hidden lg:block absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[250px] opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity duration-300 z-20 grayscale rotate-3 shadow-2xl">
                     <Image 
-                      src={project.coverImage} 
+                      src={project.coverImage}
                       alt={project.title || "Project Cover"}
                       fill
+                      sizes="400px"
                       className="object-cover"
                     />
                   </div>

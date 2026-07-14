@@ -2,7 +2,8 @@
 import { getRandomNeoBrutalistColor } from "@/lib/utils";
 import type { Project } from "@/tina/__generated__/types";
 import { motion } from "framer-motion";
-import { ExternalLink, Github, GithubIcon, GlobeIcon } from "lucide-react";
+import { ExternalLink } from "lucide-react";
+import { FaGithub } from "react-icons/fa";
 import Image from "next/image";
 import { Button } from "../ui/button";
 import Link from "next/link";
@@ -59,7 +60,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
 								rel="noopener noreferrer"
 								className="flex items-center gap-2 bg-black text-white px-3 sm:px-4 py-2 hover:-translate-y-1 transition-transform text-sm sm:text-base"
 							>
-								<Github className="w-4 h-4 sm:w-5 sm:h-5" />
+								<FaGithub className="w-4 h-4 sm:w-5 sm:h-5" />
 								Code
 							</Link>
 						)}

@@ -7,7 +7,7 @@ import { useEffect, useState } from "react";
 type Props = {
   active: boolean;
   setActive: React.Dispatch<React.SetStateAction<boolean>>;
-  children: string | JSX.Element | JSX.Element[];
+  children: React.ReactNode;
 };
 
 export default function Drawer({ active, setActive, children }: Props) {
@@ -22,7 +22,8 @@ export default function Drawer({ active, setActive, children }: Props) {
 
   useEffect(() => {
     if (active) {
-      setIsVisible(true);
+      const frame = requestAnimationFrame(() => setIsVisible(true));
+      return () => cancelAnimationFrame(frame);
     }
   }, [active]);
 
@@ -34,7 +35,7 @@ export default function Drawer({ active, setActive, children }: Props) {
       aria-modal="true"
       data-visible={isVisible ? "true" : "false"}
       onClick={closeDrawer}
-      className="fixed left-0 group top-0 z-50 flex h-[100dvh] data-[visible=true]:opacity-100 data-[visible=true]:visible data-[visible=false]:opacity-0 data-[visible=false]:invisible w-screen items-start justify-start bg-gray-500/50 transition-all duration-300"
+      className="fixed left-0 group top-0 z-50 flex h-dvh data-[visible=true]:opacity-100 data-[visible=true]:visible data-[visible=false]:opacity-0 data-[visible=false]:invisible w-screen items-start justify-start bg-gray-500/50 transition-all duration-300"
     >
       <div
         onClick={(e) => e.stopPropagation()}

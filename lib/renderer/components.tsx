@@ -98,6 +98,7 @@ export const ComponentsRenderer: Components<{}> = {
 						src={props?.url ?? "#"}
 						alt={props?.alt ?? ""}
 						fill
+						sizes="(max-width: 1024px) 100vw, 1024px"
 						className="rounded-md object-contain"
 					/>
 				</AspectRatio>

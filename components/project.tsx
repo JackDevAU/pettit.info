@@ -3,7 +3,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { TinaMarkdown } from "tinacms/dist/rich-text";
 import { Badge } from "@/components/ui/badge";
-import { GithubIcon, GlobeIcon } from "lucide-react";
+import { GlobeIcon } from "lucide-react";
+import { FaGithub } from "react-icons/fa";
 import { Button } from "@/components/ui/button";
 import { ComponentsRenderer } from "@/lib/renderer/components";
 import Typography from "@/components/util/typography";
@@ -12,8 +13,8 @@ import type { Project } from "@/tina/__generated__/types";
 export default function ProjectComponent({ project }: { project: Project }) {
 	return (
 		<article className="grid-cols-1 md:grid-cols-3 grid pt-8 h-full pb-4 ">
-			<div className=" col-span-2 flex-grow flex flex-col justify-between bg-white">
-				<div className="flex flex-grow border-2 border-black bg-blue-500">
+			<div className=" col-span-2 grow flex flex-col justify-between bg-white">
+				<div className="flex grow border-2 border-black bg-blue-500">
 					<Image
 						src={project.coverImage}
 						alt={`${project.title} screenshots`}
@@ -30,7 +31,7 @@ export default function ProjectComponent({ project }: { project: Project }) {
 				</Typography>
 			</div>
 			<div className="bg-white flex flex-col justify-between border-l-2 border-t-4 border-r-4 border-b-4 border-black">
-				<div className="flex-grow p-4 prose">
+				<div className="grow p-4 prose">
 					<TinaMarkdown
 						content={project.body}
 						components={ComponentsRenderer}
@@ -48,9 +49,9 @@ export default function ProjectComponent({ project }: { project: Project }) {
 				</div>
 				<div className="flex flex-row gap-8 p-8 items-center">
 					{project?.githubLink && (
-						<Link href={project?.githubLink} className="flex-grow ">
-							<Button className="w-full shadow-base gap-2 flex-grow bg-mainAccent text-white px-4 py-6 rounded border-2 border-black flex">
-								<GithubIcon className="w-6 h-6" />
+						<Link href={project?.githubLink} className="grow ">
+							<Button className="w-full shadow-base gap-2 grow bg-mainAccent text-white px-4 py-6 rounded border-2 border-black flex">
+								<FaGithub className="w-6 h-6" />
 								<Typography className="mt-0" variant="h3">
 									GitHub
 								</Typography>
@@ -60,7 +61,7 @@ export default function ProjectComponent({ project }: { project: Project }) {
 					{project?.websiteLink && (
 						<Link
 							href={project?.websiteLink}
-							className={project.githubLink ? "" : "flex-grow"}
+							className={project.githubLink ? "" : "grow"}
 						>
 							<Button className=" shadow-base w-full bg-green-500 text-white px-4 py-6 rounded border-2 border-black">
 								<GlobeIcon className="w-6 h-6" />

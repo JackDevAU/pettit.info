@@ -55,7 +55,7 @@ export default function TalksSection() {
 }
 
 // Explicitly typing as any to avoid implicit any errors with complex generated types
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
+ 
 function TalkContent({ talk, index }: { talk: any, index: number }) {
   return (
     <>

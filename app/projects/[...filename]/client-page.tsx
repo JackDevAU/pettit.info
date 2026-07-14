@@ -2,7 +2,7 @@
 import React from "react";
 import Link from "next/link";
 import { TinaMarkdown } from "tinacms/dist/rich-text";
-import { ArrowLeft, ArrowUpRight, Github } from "lucide-react";
+import { ArrowLeft, ArrowUpRight } from "lucide-react";
 import Image from "next/image";
 import { FaGithub } from "react-icons/fa";
 import { ComponentsRenderer } from "@/lib/renderer/components";
@@ -81,7 +81,7 @@ export default function ProjectClientPage({
 									className="group flex items-center justify-between bg-neutral-100 text-black px-6 py-4 rounded-xl font-bold tracking-wider hover:bg-neutral-200 transition-all"
 								>
 									<span>SOURCE CODE</span>
-									<Github className="w-5 h-5" />
+									<FaGithub className="w-5 h-5" />
 								</a>
 							)}
 						</div>
@@ -135,6 +135,7 @@ export default function ProjectClientPage({
 									src={coverImage}
 									alt={title}
 									fill
+									sizes="(max-width: 1024px) 100vw, 1024px"
 									className="object-cover"
 									priority
 								/>

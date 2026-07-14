@@ -48,7 +48,7 @@ export default function RootLayout({
 				<div className="bg-noise" />
 				<main className="relative w-full min-h-screen flex flex-col">
 					<Navbar />
-					<div className="flex-grow px-4 sm:px-8 lg:px-12 max-w-[1600px] mx-auto w-full">
+					<div className="grow px-4 sm:px-8 lg:px-12 max-w-[1600px] mx-auto w-full">
 						{children}
 					</div>
 					<Footer />

@@ -44,6 +44,7 @@ export default function HeroSection() {
           src="/JackP.jpg"
           alt="Professional Portrait"
           fill
+          sizes="(max-width: 1024px) 100vw, 50vw"
           className="object-cover object-center grayscale hover:grayscale-0 transition-all duration-700"
           priority
         />
@@ -66,7 +67,7 @@ export default function HeroSection() {
         </div>
 
         {/* Overlay Gradient */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent pointer-events-none" />
+        <div className="absolute inset-0 bg-linear-to-t from-black/10 to-transparent pointer-events-none" />
       </div>
     </section>
   );

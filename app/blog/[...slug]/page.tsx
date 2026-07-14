@@ -34,23 +34,26 @@ export default async function PostPage({
 	const { slug } = await params;
 	const relativePath = `${slug.join("/")}.mdx`;
 
+	let result: Awaited<ReturnType<typeof client.queries.post>>;
 	try {
-		const { data, query, variables } = await client.queries.post({
+		result = await client.queries.post({
 			relativePath,
 		});
-
-		if (!data.post) {
-			return <div className="pt-24 text-center text-xl font-bold">Post not found</div>;
-		}
-
-		// Calculate read time on server
-		const serverReadTime = calculateReadTime(data.post.body);
-
-		return <BlogClientPage data={data} query={query} variables={variables} serverReadTime={serverReadTime} />;
 	} catch (error) {
 		console.error("Error fetching post:", error);
 		return <div className="pt-24 text-center text-xl font-bold">Error loading post.</div>;
 	}
+
+	const { data, query, variables } = result;
+
+	if (!data.post) {
+		return <div className="pt-24 text-center text-xl font-bold">Post not found</div>;
+	}
+
+	// Calculate read time on server
+	const serverReadTime = calculateReadTime(data.post.body);
+
+	return <BlogClientPage data={data} query={query} variables={variables} serverReadTime={serverReadTime} />;
 }
 
 export const generateStaticParams = async () => {

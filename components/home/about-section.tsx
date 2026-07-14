@@ -11,6 +11,7 @@ export default function AboutSection() {
 						src="/JackP.jpg"
 						alt="Jack Pettit Portrait"
 						fill
+						sizes="(max-width: 1024px) 100vw, 50vw"
 						className="object-cover grayscale hover:grayscale-0 transition-all duration-700"
 					/>
 					{/* Decorative Box */}
@@ -27,7 +28,7 @@ export default function AboutSection() {
 
 					<div className="space-y-8 text-xl sm:text-2xl font-medium leading-relaxed max-w-xl">
 						<p>
-							I'm Jack, an Australian Fullstack Software Engineer who builds scalable solutions with React and .NET. As a Certified Scrum Master, I value clean code, agile workflows, and delivering real value.
+							I&apos;m Jack, an Australian Fullstack Software Engineer who builds scalable solutions with React and .NET. As a Certified Scrum Master, I value clean code, agile workflows, and delivering real value.
 						</p>
 						<p className="text-neutral-500">
 							Whether it’s discussing architectural patterns, the latest in frontend tech, or simply brewing a good coffee, I’m always open to connecting.

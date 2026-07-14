@@ -59,7 +59,7 @@ export default function Navbar() {
 						animate={{ opacity: 1, y: 0 }}
 						exit={{ opacity: 0, y: "-100%" }}
 						transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-						className="fixed inset-0 bg-black z-[60] text-white flex flex-col p-8"
+						className="fixed inset-0 bg-black z-60 text-white flex flex-col p-8"
 					>
 						<div className="flex justify-between items-center mb-16">
 							<span className="text-sm font-bold tracking-widest text-neutral-500">NAVIGATION</span>

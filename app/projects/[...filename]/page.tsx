@@ -35,15 +35,18 @@ export default async function ProjectPage({
 	// The previous error "content/projects/undefined.mdx" suggests 'filename' was undefined or not parsed correctly
 	const relativePath = `${filename.join('/')}.mdx`;
 
+	let result: Awaited<ReturnType<typeof client.queries.project>>;
 	try {
-		const { data, query, variables } = await client.queries.project({
+		result = await client.queries.project({
 			relativePath,
 		});
-
-		return <ProjectClientPage data={data} query={query} variables={variables} />;
 	} catch (error) {
 		return <div className="pt-24 text-center text-xl font-bold">Project not found or error loading content.</div>;
 	}
+
+	const { data, query, variables } = result;
+
+	return <ProjectClientPage data={data} query={query} variables={variables} />;
 }
 
 export const generateStaticParams = async () => {

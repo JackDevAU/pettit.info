@@ -1,6 +1,6 @@
 import Link from "next/link";
-import { ArrowUpRight, Mail, MapPin, Calendar, Linkedin } from "lucide-react";
-import { FaGithub } from "react-icons/fa";
+import { ArrowUpRight, Mail, MapPin, Calendar } from "lucide-react";
+import { FaGithub, FaLinkedin } from "react-icons/fa";
 
 export default function ContactSection() {
 	return (
@@ -13,10 +13,10 @@ export default function ContactSection() {
 					{/* Left Side: Text */}
 					<div className="space-y-8 text-center lg:text-left">
 						<h2 className="text-5xl sm:text-7xl lg:text-8xl font-black tracking-tighter leading-[0.9]">
-							LET'S<br />WORK<br />TOGETHER
+							LET&apos;S<br />WORK<br />TOGETHER
 						</h2>
 						<p className="text-xl sm:text-2xl text-neutral-400 max-w-lg font-medium mx-auto lg:mx-0">
-							Ready to start your next project? Let's discuss how we can build scalable, high-performance solutions together.
+							Ready to start your next project? Let&apos;s discuss how we can build scalable, high-performance solutions together.
 						</p>
 					</div>
 
@@ -65,7 +65,7 @@ export default function ContactSection() {
 								target="_blank"
 								className="flex items-center justify-center gap-3 p-4 bg-neutral-900/50 hover:bg-[#0077b5] border border-white/10 rounded-xl transition-all duration-300 font-bold"
 							>
-								<Linkedin className="w-5 h-5" />
+								<FaLinkedin className="w-5 h-5" />
 								LinkedIn
 							</Link>
 							<Link
@@ -87,7 +87,7 @@ export default function ContactSection() {
 				</div>
 
 				{/* Big Decorative Circle */}
-				<div className="absolute top-1/2 left-0 -translate-y-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-neutral-800 rounded-full blur-[120px] -z-0 opacity-30 pointer-events-none"></div>
+				<div className="absolute top-1/2 left-0 -translate-y-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-neutral-800 rounded-full blur-[120px] z-0 opacity-30 pointer-events-none"></div>
 			</div>
 		</section>
 	);

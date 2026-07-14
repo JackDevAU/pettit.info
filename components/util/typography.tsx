@@ -33,7 +33,7 @@ export const typographyVariants = cva(baseStyles, {
 
 interface TypographyProps extends VariantProps<typeof typographyVariants> {
 	children: React.ReactNode;
-	as?: keyof JSX.IntrinsicElements;
+	as?: keyof React.JSX.IntrinsicElements;
 	className?: string;
 }
 
