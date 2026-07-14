@@ -77,7 +77,7 @@ export default function BlogClientPage({ data, query, variables, serverReadTime 
                )}
             </div>
 
-            <h1 className="text-5xl sm:text-7xl font-black tracking-tighter leading-[0.9]">
+            <h1 className="text-5xl sm:text-7xl font-black tracking-tighter leading-none">
               {title}
             </h1>
           </div>
