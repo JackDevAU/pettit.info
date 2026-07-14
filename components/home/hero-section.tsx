@@ -8,7 +8,7 @@ export default function HeroSection() {
       {/* Left Column */}
       <div className="flex flex-col justify-between h-full space-y-12 lg:space-y-0">
         <div className="space-y-2">
-          <h1 className="text-7xl sm:text-8xl lg:text-[10rem] font-black leading-[0.85] tracking-tighter">
+          <h1 className="text-7xl sm:text-8xl lg:text-[10rem] font-black leading-[0.85] tracking-tight">
             JACK
             <br />
             PETTIT

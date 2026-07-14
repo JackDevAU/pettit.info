@@ -3,6 +3,12 @@ import { ArrowUpRight } from "lucide-react";
 import Image from "next/image";
 import client from "@/tina/__generated__/client";
 
+export const metadata = {
+	title: "Projects",
+	openGraph: { images: ["/og?label=Jack%20Pettit&title=Projects"] },
+	twitter: { card: "summary_large_image", images: ["/og?label=Jack%20Pettit&title=Projects"] },
+};
+
 export default async function ProjectsPage() {
   // Explicitly typing as any[] to avoid implicit any errors with complex generated types
    

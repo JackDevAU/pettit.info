@@ -23,7 +23,7 @@ export const metadata: Metadata = {
 	openGraph: {
 		type: "website",
 		description: "Jack Pettit's portfolio",
-		images: [""],
+		images: ["/og"],
 		url: "https://pettit.info",
 		title: "Jack Pettit's portfolio",
 	},
@@ -32,7 +32,6 @@ export const metadata: Metadata = {
 		card: "summary_large_image",
 		title: "Jack Pettit's portfolio",
 		description: "Check out Jack Pettit's portfolio!",
-		images: ["https://pettit.infopreview.png"],
 		creator: "@PB_Pettit",
 	},
 };

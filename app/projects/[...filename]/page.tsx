@@ -14,9 +14,20 @@ export async function generateMetadata({
 			relativePath,
 		});
 
+		const ogImage = `/og?label=Project&title=${encodeURIComponent(project.data.project.title)}`;
+
 		return {
 			title: project.data.project.title,
 			description: project.data.project.abstract,
+			openGraph: {
+				title: project.data.project.title,
+				description: project.data.project.abstract ?? undefined,
+				images: [ogImage],
+			},
+			twitter: {
+				card: "summary_large_image",
+				images: [ogImage],
+			},
 		};
 	} catch (error) {
 		return {

@@ -3,6 +3,12 @@ import { ArrowUpRight } from "lucide-react";
 import client from "@/tina/__generated__/client";
 import { format } from "date-fns";
 
+export const metadata = {
+	title: "Blog",
+	openGraph: { images: ["/og?label=Jack%20Pettit&title=Blog"] },
+	twitter: { card: "summary_large_image", images: ["/og?label=Jack%20Pettit&title=Blog"] },
+};
+
 export default async function BlogPage() {
   let posts: any[] = [];
 
