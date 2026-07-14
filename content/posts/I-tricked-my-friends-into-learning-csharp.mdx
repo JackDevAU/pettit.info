@@ -9,17 +9,17 @@ lastUpdated: 2026-07-13T14:00:00.000Z
 
 I recently made a fun little game. I'd been wanting an excuse to write some C# again, and I've been on a bit of a game dev kick lately, so I mixed the two and made a game where the way you play is by writing C#. Well, mostly... we'll get to that.
 
-The game is quite basic. There's an arena with a single boss going up against x number of players. Every 5 minutes we all try and beat the boss. On success, the boss gets harder and loot is dropped (well... sometimes... if you add the roll code). The fun part is going in and optimising your "hero", making sure you can avoid the telegraphed attacks while also dealing as much damage as possible. If you're a healer, you're trying to keep everyone else alive while also doing as much damage as possible. And for tanks, well, it's just trying to get hit in the face.
+The game is quite basic. There's an arena with a single boss going up against *x* number of players. Every 5 minutes we all try and beat the boss. On success, the boss gets harder and loot is dropped (well... sometimes... if you add the roll code). The fun part is going in and optimising your "hero", making sure you can avoid the telegraphed attacks while also dealing as much damage as possible. If you're a healer, you're trying to keep everyone else alive while also doing as much damage as possible. And for tanks, well, it's just trying to get hit in the face.
 
 As you may have already been thinking (or not), this game is heavily influenced and inspired by... "Have you heard of the critically acclaimed MMORPG Final Fantasy XIV? With an expanded free trial which you can play through the entirety of A Realm Reborn and the award-winning Heavensward expansion up to level 60 for free with no restrictions on playtime." Sorry, I had to add this somewhere.
 
 But enough about the game, let's talk about how this was made and what magic is going on under the hood!
 
-This time around I decided to give [Lit](https://lit.dev) a try. I surround myself with React all day, and trying out web components is something I just hadn't been able to get around to. So the whole UI is made out of web components, which was a nice change of pace. Working with Lit was honestly a joy and I'll be using it on other projects where I can. The layout is built using [GoldenLayout](https://golden-layout.com/), which gives a tiled workspace where you can drag and drop windows/panels wherever you want (e.g. the code editor, arena, character sheet, API docs, pull results).
+This time around I decided to give [Lit](https://lit.dev) a try. I surround myself with React all day, and trying out web components is something I just hadn't been able to get around to. So the whole UI is made out of web components, which was a nice change of pace. Working with Lit is honestly a joy and I'll be using it on other projects where I can. The layout is built using [GoldenLayout](https://golden-layout.com/), which gives a tiled workspace where you can drag and drop windows/panels wherever you want (e.g. the code editor, arena, character sheet, API docs, pull results, etc.).
 
-The editor itself is [CodeMirror](https://codemirror.net/), so with a little bit of tuning, you can get real IntelliSense in the browser, proper completions, hover info, error squiggles, even go-to-definition. This is working via a Roslyn workspace with the game's API loaded in, and the editor just asks it whenever it needs to know something.
+The editor itself is [CodeMirror](https://codemirror.net/), so with a little bit of tuning, you can get real IntelliSense in the browser, proper completions, hover info, error squiggles, and even go-to-definition. This works via a Roslyn workspace on the server with the game's API loaded in, and the editor just asks it whenever it needs to know something.
 
-This is how characters, which are just C# classes, get built and optimised. For example, here's a chunk of the Dragoon starter template.
+This is how characters, which are just C# classes, get built and optimised. For example, here's a chunk of the Dragoon starter template:
 
 ```csharp
 public class MyDragoon : Dragoon
@@ -40,19 +40,19 @@ public class MyDragoon : Dragoon
 }
 ```
 
-When you hit "deploy" (when you save), your code gets sent to the server, compiled with Roslyn straight into memory, and loaded into its own isolated assembly runtime. If it doesn't compile, the errors come back and get squiggled in your editor. If it all compiles, your hero is now part of the fight, forever, even while you're asleep (or at work... I won't tell anyone).
+When you hit "deploy" (when you save), your code gets sent to the server, compiled with Roslyn straight into memory, and loaded into its own isolated assembly runtime. If it doesn't compile, the errors come back and get squiggled in your editor. If it all compiles, your hero is now part of the fight, forever, even while you're asleep (or at work... I won't tell anyone)
 
 Not everyone wanted to write C#, which is fair, but also unacceptable (I'm kidding). So I added a "hero builder", a little rules UI where you stack up "when X, do Y" rows and reorder them by priority. For example, when I'm standing in danger, move to safety. Or when an ally drops below 75%, heal them. Otherwise, attack the boss.
 
-Under the hood, all this is doing is generating real C#, straight into a file in the editor where you can see it. So the progression goes something like this. You build a hero with the dropdowns, notice that it's missing something... because the builder didn't have the option you wanted... and congratulations, you're a C# developer now. Yay!
+Under the hood, all this is doing is generating real C#, straight into a file in the editor where you can see it. So the progression goes, you build a hero with the dropdowns, notice that it's missing something because the builder didn't have the option you wanted... and congratulations, you're a C# developer now. Yay!
 
-Now, letting your mates run arbitrary C# on your server is, historically, a terrible idea. So before anything compiles, a source guard walks the syntax tree and rejects anything that isn't game code. I won't be telling you what's on the naughty list, half the fun is finding out at compile time.
+Now, letting your mates run arbitrary C# on your server is, historically, a terrible idea. So before anything compiles, a source guard walks the syntax tree and rejects anything that isn't game code. I won't be telling you what's on the naughty list, half the fun is finding out at compile time :)
 
 At runtime, every hero gets a time budget per tick. I have bills to pay here... So, if you ever wonder why your guy is standing there doing nothing... it's either A. a bug OR B. you have too much going on. Is this sandbox bulletproof? ~~Probably~~ Definitely not. So... if you do find something... please don't abuse it (unless it's really funny and doesn't cost me a lot of money).
 
-As for the backend, it's .NET 11 (preview, we live dangerously) with [FastEndpoints](https://fast-endpoints.com/), one folder per feature, one endpoint per file, very tidy. The entire game state is stored with SQLite, which makes deploys and backups delightful.
+As for the backend, it's .NET 11 (preview, we live dangerously) with [FastEndpoints](https://fast-endpoints.com/), one folder per feature, which is nice and easy to work with. The entire game state is stored using SQLite, which makes deploys and backups delightful.
 
-The fights themselves run on a tiny hand-rolled ECS, and there's a fun trick here. When the pull timer hits zero, the whole fight is simulated in a few milliseconds, then played back tick by tick over a WebSocket so everyone's arena shows the same fight in real time. We're all watching a replay and pretending it's live, and it's working so far.
+The fights themselves run on a tiny hand-rolled ECS, which allows me to run simulations for testing as well as on the main production site. When the pull timer hits zero, the whole fight is simulated in a few milliseconds, then played back tick by tick over a WebSocket so everyone's arena shows the same fight in real time. So spoilers, we're all watching a replay and it's working well so far.
 
 The whole lot ships as a single Docker container on Railway, with the SQLite db on a volume and Cloudflare in front to save me some network egress.
 
@@ -61,4 +61,3 @@ If any of that sounds like fun, come write a hero and get flattened with us. And
 Also expect nerfs, potential *breaking* API changes and a bunch of bug fixes. I'll really try not to break every class's API... but just watch out (sorry Summoner and Priest).
 
 Go check it out [right here](https://game.jackpettit.dev).
-
